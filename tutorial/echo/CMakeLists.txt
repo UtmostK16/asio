@@ -1,0 +1,15 @@
+add_executable(s_blocking_tcp_echo_client blocking_tcp_echo_client.cpp)
+add_executable(s_blocking_tcp_echo_server blocking_tcp_echo_server.cpp)
+add_executable(s_async_tcp_echo_server async_tcp_echo_server.cpp)
+
+target_compile_options(s_blocking_tcp_echo_client PUBLIC -DASIO_STANDLONE)
+target_include_directories(s_blocking_tcp_echo_client PUBLIC ${ASIO_INCLUDE_DIR})
+target_link_libraries(s_blocking_tcp_echo_client PUBLIC pthread)
+
+target_compile_options(s_blocking_tcp_echo_server PUBLIC -DASIO_STANDLONE)
+target_include_directories(s_blocking_tcp_echo_server PUBLIC ${ASIO_INCLUDE_DIR})
+target_link_libraries(s_blocking_tcp_echo_server PUBLIC pthread)
+
+target_compile_options(s_async_tcp_echo_server PUBLIC -DASIO_STANDLONE)
+target_include_directories(s_async_tcp_echo_server PUBLIC ${ASIO_INCLUDE_DIR})
+target_link_libraries(s_async_tcp_echo_server PUBLIC pthread)
